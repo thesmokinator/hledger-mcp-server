@@ -1,0 +1,41 @@
+[project]
+name = "hledger-mcp"
+version = "0.1.0"
+description = "MCP server for hledger plain-text accounting — full read/write access to journals via AI agents"
+readme = "README.md"
+authors = [
+    { name = "Michele Broggi" }
+]
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE.md"]
+dependencies = [
+    "mcp[cli]>=1.4.0",
+]
+
+[project.urls]
+Repository = "https://github.com/thesmokinator/hledger-mcp-server"
+
+[project.scripts]
+hledger-mcp = "hledger_mcp.server:run"
+
+[build-system]
+requires = ["uv_build>=0.10.5,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.15.10",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
